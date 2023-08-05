@@ -1,12 +1,19 @@
 import { registerApplication, start } from "single-spa";
+import {
+  constructApplications,
+  constructRoutes,
+  constructLayoutEngine,
+} from "single-spa-layout";
+import microfrontendLayout from "./microfrontend-layout.html";
 
-registerApplication({
-  name: "@navbar/vuexy-navbar",
-  app: () => System.import("@navbar/vuexy-navbar"),
-  activeWhen: ["/"],
+const routes = constructRoutes(microfrontendLayout);
+const applications = constructApplications({
+  routes,
+  loadApp({ name }) {
+    return System.import(name);
+  },
 });
+const layoutEngine = constructLayoutEngine({ routes, applications });
 
-start({
-  urlRerouteOnly: true,
-  timeout: 10000,
-});
+applications.forEach(registerApplication);
+start();
