@@ -34,7 +34,9 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"
       }
     }
   </script>
@@ -48,7 +50,8 @@
     {
       "imports": {
         "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-        "@vuexy/root-config": "//localhost:9000/vuexy-root-config.js"
+        "@vuexy/root-config": "//localhost:9000/vuexy-root-config.js",
+        "@navbar/vuexy-navbar": "http://localhost:8500/navbar-vuexy-navbar.js"
       }
     }
   </script>
@@ -76,6 +79,7 @@
   </noscript>
   <script>
     System.import('@vuexy/root-config');
+    System.import('@navbar/vuexy-navbar');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>
